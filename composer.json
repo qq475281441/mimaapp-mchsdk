@@ -1,0 +1,21 @@
+{
+  "name": "mima/opensdk",
+  "description": "密马App开放平台",
+  "type": "library",
+  "authors": [
+    {
+      "name": "laon",
+      "email": "475281441@qq.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "ext-json": "*",
+    "guzzlehttp/guzzle": "^7.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "mima\\": "src"
+    }
+  }
+}
