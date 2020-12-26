@@ -57,9 +57,11 @@ $client->setGateway('http://localhost:8080/');
 //$result = $client->get('/open/report_reason', ['game_type' => '1']);
 //print_r($result);
 
+//echo json_encode($result,JSON_UNESCAPED_UNICODE);
 //赔偿原因类型
 //$result = $client->get('/open/compensate_reason', ['game_type' => '1']);
 //print_r($result);
+//echo json_encode($result,JSON_UNESCAPED_UNICODE);
 
 //申请售后
 //$result = $client->post('/open/order/apply_report',
@@ -76,13 +78,31 @@ $client->setGateway('http://localhost:8080/');
 //
 //print_r($result);
 //撤销订单
-$result = $client->post('/open/order/cancel',
-                        [
-	                        'order_num'            => '2012251704498743466',
-	                        'a'            => '2012251704498743466',
-	                        'b'            => '2012251704498743466',
-                        ]);
+//$result = $client->post('/open/order/cancel',
+//                        [
+//	                        'order_num'            => '2012251704498743466',
+//	                        'a'            => '2012251704498743466',
+//	                        'b'            => '2012251704498743466',
+//                        ]);
+//
+//
+//
+//print_r($result);
+//获取消息列表
+//$result = $client->get('/open/order/msg',
+//                       [
+//	                       'order_num' => '2012261646445141971',
+//	                       'page'      => 1,
+//                       ]);
+////
+//print_r($result);
+//$result = $client->post('/open/order/send_msg',
+//                       [
+//	                       'order_num' => '2012261646445141971',
+//	                       'content'      => '你好，在不在啊，怎么还没打完？在不打完扣你钱',
+//                       ]);
+//print_r($result);
 
 
-
-print_r($result);
+$result=$client->get('/open/order/get',['order_num'=>'2012261646445141971']);
+var_dump($result);
