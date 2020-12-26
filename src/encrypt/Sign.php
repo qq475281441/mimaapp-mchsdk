@@ -33,7 +33,7 @@ class Sign
 		ksort($value);//按键名升序
 		$str = '';
 		foreach ($value as $k => $v) {
-			if ($k == 'sign' || trim($v) == null || trim($v) == '') {
+			if ($k == 'sign') {
 				continue;
 			}
 			$str .= $k . '=' . $v . '&';

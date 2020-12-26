@@ -53,7 +53,36 @@ $client->setGateway('http://localhost:8080/');
 //
 //print_r($result);
 
+//代练售后原因
+//$result = $client->get('/open/report_reason', ['game_type' => '1']);
+//print_r($result);
 
-$result = $client->get('/open/report_reason', ['game_type'      => '1']);
+//赔偿原因类型
+//$result = $client->get('/open/compensate_reason', ['game_type' => '1']);
+//print_r($result);
+
+//申请售后
+//$result = $client->post('/open/order/apply_report',
+//                        [
+//	                        'order_num'            => '2012251701320061006',
+//	                        'report_reason_id'     => '1',
+//	                        'compensate_reason_id' => '1',
+//	                        'content'              => '我要退钱',
+//	                        'compensate_price'     => '20',
+//	                        'refund_amount'        => '20',
+//                        ]);
+//
+//
+//
+//print_r($result);
+//撤销订单
+$result = $client->post('/open/order/cancel',
+                        [
+	                        'order_num'            => '2012251704498743466',
+	                        'a'            => '2012251704498743466',
+	                        'b'            => '2012251704498743466',
+                        ]);
+
+
 
 print_r($result);
