@@ -10,30 +10,51 @@ class Client
 {
 	protected $version = '1.0';
 	
-	public    $client;
+	protected $client;
 	
 	protected $appid;
 	
 	protected $key;
 	
-	//	public    $gateway = 'https://api.mimaapp.com/';
-	public $gateway = 'http://localhost:8080/';
+	public    $gateway = 'https://api.mimaapp.com/';
 	
-	public $sign;
+	public    $sign;
 	
 	public function __construct($appid, $key)
 	{
-		$this->appid  = $appid;
-		$this->key    = $key;
-		$this->client = new GuzzleClient(
+		$this->appid = $appid;
+		$this->key   = $key;
+		$this->sign  = new Sign($key);
+	}
+	
+	public function getClient(): GuzzleClient
+	{
+		return $this->client = $this->client ?: new GuzzleClient(
 			[
 				'base_uri' => $this->gateway,
 				'headers'  => [
-					'appid'        => $appid,
+					'appid'        => $this->appid,
 					'Content-Type' => 'application/json'
 				]
 			]);
-		$this->sign   = new Sign($key);
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getGateway(): string
+	{
+		return $this->gateway;
+	}
+	
+	/**
+	 * @param string $gateway
+	 * @return Client
+	 */
+	public function setGateway(string $gateway): Client
+	{
+		$this->gateway = $gateway;
+		return $this;
 	}
 	
 	/**
@@ -46,7 +67,7 @@ class Client
 	public function post($url, array $data): array
 	{
 		$data    = $this->sign->sign($data);
-		$result  = $this->client->request('post', ltrim($url, '/'), ['body' => json_encode($data)]);
+		$result  = $this->getClient()->request('post', ltrim($url, '/'), ['body' => json_encode($data)]);
 		$content = $result->getBody()->getContents();
 		return json_decode($content, true);
 	}
@@ -61,7 +82,7 @@ class Client
 	public function get($url, array $data): array
 	{
 		$data    = $this->sign->sign($data);
-		$result  = $this->client->request('get', ltrim($url, '/'), ['query' => http_build_query($data)]);
+		$result  = $this->getClient()->request('get', ltrim($url, '/'), ['query' => http_build_query($data)]);
 		$content = $result->getBody()->getContents();
 		return json_decode($content, true);
 	}
