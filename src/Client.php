@@ -66,9 +66,10 @@ class Client
 	 */
 	public function post($url, array $data): array
 	{
-		$data    = $this->sign->sign($data);
-		$result  = $this->getClient()->request('post', ltrim($url, '/'), ['body' => json_encode($data)]);
-		$content = $result->getBody()->getContents();
+		$data['version'] = $this->version;
+		$data            = $this->sign->sign($data);
+		$result          = $this->getClient()->request('post', ltrim($url, '/'), ['body' => json_encode($data)]);
+		$content         = $result->getBody()->getContents();
 		return json_decode($content, true);
 	}
 	
@@ -81,9 +82,10 @@ class Client
 	 */
 	public function get($url, array $data): array
 	{
-		$data    = $this->sign->sign($data);
-		$result  = $this->getClient()->request('get', ltrim($url, '/'), ['query' => http_build_query($data)]);
-		$content = $result->getBody()->getContents();
+		$data['version'] = $this->version;
+		$data            = $this->sign->sign($data);
+		$result          = $this->getClient()->request('get', ltrim($url, '/'), ['query' => http_build_query($data)]);
+		$content         = $result->getBody()->getContents();
 		return json_decode($content, true);
 	}
 }
