@@ -4,9 +4,9 @@ use mima\Client;
 
 require '../../vendor/autoload.php';
 
-$client = new Client('791212754', 'LWFug7TGXWc0xhQSapL5afIoJsB5Y559');
+$client = new Client('791212754', 'LWFug7TGXWc0xhQSapL5afIoJsB5Y559');//你的appid和secret
 
-$client->setGateway('http://localhost:8080/');
+$client->setGateway('http://localhost:8080/');//设置测试网关
 //
 //$result = $client->get('open/order/list', ['aaa' => 'bbb', 'ccc' => 'ddd']);
 //
@@ -103,6 +103,5 @@ $client->setGateway('http://localhost:8080/');
 //                       ]);
 //print_r($result);
 
-
-$result=$client->get('/open/order/get',['order_num'=>'2012261646445141971']);
+$result = $client->get('/open/order/get', ['order_num' => '2012261646445141971']);
 var_dump($result);
