@@ -66,7 +66,7 @@ $client->setGateway('http://localhost:8080/');//设置测试网关
 //申请售后
 //$result = $client->post('/open/order/apply_report',
 //                        [
-//	                        'order_num'            => '2012251701320061006',
+//	                        'order_num'            => '2012281418623750151',
 //	                        'report_reason_id'     => '1',
 //	                        'compensate_reason_id' => '1',
 //	                        'content'              => '我要退钱',
@@ -103,5 +103,20 @@ $client->setGateway('http://localhost:8080/');//设置测试网关
 //                       ]);
 //print_r($result);
 
-$result = $client->get('/open/order/get', ['order_num' => '2012261646445141971']);
-var_dump($result);
+//$result = $client->get('/open/order/get', ['order_num' => '2012281418623750151']);
+//var_dump($result);
+//$result = $client->get('/open/order/report_msg_list', ['order_report_id' => '101056']);
+//var_dump($result);
+
+//$result = $client->post('/open/order/report_send_msg', ['order_report_id' => '101056','content'=>'我是上家']);
+//
+//var_dump($result);
+//$result = $client->post('/open/order/operate_push', ['order_num' => '2012281418623750151','action'=>'2']);
+//
+//var_dump($result);
+//$result = $client->get('/open/order/report_detail', ['order_report_id' => '101056']);
+//
+//var_dump($result);
+//$result = $client->post('/open/order/confirm_delay', ['order_num' => '2012281623291192810', 'action' => '1']);
+//
+//var_dump($result);
