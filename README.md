@@ -1,2 +1,2 @@
-# mimaapp-mchsdk
+# mimaapp-opensdk
 密马App开放api
