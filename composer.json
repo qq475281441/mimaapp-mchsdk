@@ -1,6 +1,7 @@
 {
   "name": "mimaapp/opensdk",
   "description": "密马App开放平台",
+  "license": "Apache-2.0",
   "type": "library",
   "authors": [
     {
